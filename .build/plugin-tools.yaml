@@ -1,0 +1,123 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "CRTEffectsKit-arm64-apple-macosx26.0-debug.module": ["<CRTEffectsKit-arm64-apple-macosx26.0-debug.module>"]
+  "CRTEffectsKitPackageTests-arm64-apple-macosx26.0-debug.module": ["<CRTEffectsKitPackageTests-arm64-apple-macosx26.0-debug.module>"]
+  "CRTEffectsKitPackageTests-arm64-apple-macosx26.0-debug.test": ["<CRTEffectsKitPackageTests-arm64-apple-macosx26.0-debug.test>"]
+  "CRTEffectsKitTests-arm64-apple-macosx26.0-debug.module": ["<CRTEffectsKitTests-arm64-apple-macosx26.0-debug.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "main": ["<CRTEffectsKit-arm64-apple-macosx26.0-debug.module>"]
+  "test": ["<CRTEffectsKit-arm64-apple-macosx26.0-debug.module>","<CRTEffectsKitPackageTests-arm64-apple-macosx26.0-debug.test>","<CRTEffectsKitTests-arm64-apple-macosx26.0-debug.module>"]
+default: "main"
+nodes:
+  "/Users/johnpavley/Developer/CRTEffectsKit/Sources/CRTEffectsKit/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/johnpavley/Developer/CRTEffectsKit/Tests/CRTEffectsKitTests/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/johnpavley/Developer/CRTEffectsKit/Sources/CRTEffectsKit/CRTConfig.swift","/Users/johnpavley/Developer/CRTEffectsKit/Sources/CRTEffectsKit/CRTModifier.swift","/Users/johnpavley/Developer/CRTEffectsKit/Sources/CRTEffectsKit/ScanlineFlicker.swift","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/DerivedSources/resource_bundle_accessor.swift"]
+    outputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/sources"]
+    description: "Write auxiliary file /Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/sources"
+
+  "/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.derived/runner.swift"]
+    outputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.build/sources"]
+    description: "Write auxiliary file /Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.build/sources"
+
+  "/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.derived/runner.swift":
+    tool: test-entry-point-tool
+    inputs: []
+    outputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.derived/runner.swift"]
+
+  "/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/CRTConfig.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/CRTModifier.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/ScanlineFlicker.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/resource_bundle_accessor.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.build/runner.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitTests.build/CRTEffectsKitTests.swift.o"]
+    outputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.product/Objects.LinkFileList"
+
+  "/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitTests.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/johnpavley/Developer/CRTEffectsKit/Tests/CRTEffectsKitTests/CRTEffectsKitTests.swift"]
+    outputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitTests.build/sources"]
+    description: "Write auxiliary file /Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitTests.build/sources"
+
+  "/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit_CRTEffectsKit.bundle/CRTShader.metal":
+    tool: copy-tool
+    inputs: ["/Users/johnpavley/Developer/CRTEffectsKit/Sources/CRTEffectsKit/Shaders/CRTShader.metal"]
+    outputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit_CRTEffectsKit.bundle/CRTShader.metal"]
+    description: "Copying /Users/johnpavley/Developer/CRTEffectsKit/Sources/CRTEffectsKit/Shaders/CRTShader.metal"
+
+  "/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"]
+    outputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+
+  "<CRTEffectsKit-arm64-apple-macosx26.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/CRTConfig.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/CRTModifier.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/ScanlineFlicker.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/resource_bundle_accessor.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKit.swiftmodule"]
+    outputs: ["<CRTEffectsKit-arm64-apple-macosx26.0-debug.module>"]
+
+  "<CRTEffectsKitPackageTests-arm64-apple-macosx26.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.build/runner.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKitPackageTests.swiftmodule"]
+    outputs: ["<CRTEffectsKitPackageTests-arm64-apple-macosx26.0-debug.module>"]
+
+  "<CRTEffectsKitPackageTests-arm64-apple-macosx26.0-debug.test>":
+    tool: phony
+    inputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.xctest/Contents/MacOS/CRTEffectsKitPackageTests"]
+    outputs: ["<CRTEffectsKitPackageTests-arm64-apple-macosx26.0-debug.test>"]
+
+  "<CRTEffectsKitTests-arm64-apple-macosx26.0-debug.module>":
+    tool: phony
+    inputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitTests.build/CRTEffectsKitTests.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKitTests.swiftmodule"]
+    outputs: ["<CRTEffectsKitTests-arm64-apple-macosx26.0-debug.module>"]
+
+  "C.CRTEffectsKit-arm64-apple-macosx26.0-debug.module":
+    tool: shell
+    inputs: ["/Users/johnpavley/Developer/CRTEffectsKit/Sources/CRTEffectsKit/CRTConfig.swift","/Users/johnpavley/Developer/CRTEffectsKit/Sources/CRTEffectsKit/CRTModifier.swift","/Users/johnpavley/Developer/CRTEffectsKit/Sources/CRTEffectsKit/ScanlineFlicker.swift","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/DerivedSources/resource_bundle_accessor.swift","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","<CRTEffectsKit-arm64-apple-macosx26.0-debug.module-resources>","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/sources"]
+    outputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/CRTConfig.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/CRTModifier.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/ScanlineFlicker.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/resource_bundle_accessor.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKit.swiftmodule"]
+    description: "Compiling Swift Module 'CRTEffectsKit' (4 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","CRTEffectsKit","-emit-dependencies","-emit-module","-emit-module-path","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKit.swiftmodule","-output-file-map","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/sources","-I","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx14.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j16","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE","-module-cache-path","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/include/CRTEffectsKit-Swift.h","-swift-version","5","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","crteffectskit"]
+
+  "C.CRTEffectsKitPackageTests-arm64-apple-macosx26.0-debug.module":
+    tool: shell
+    inputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.derived/runner.swift","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKitTests.swiftmodule","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.build/sources"]
+    outputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.build/runner.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKitPackageTests.swiftmodule"]
+    description: "Compiling Swift Module 'CRTEffectsKitPackageTests' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","CRTEffectsKitPackageTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKitPackageTests.swiftmodule","-output-file-map","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.build/sources","-I","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx14.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-Xfrontend","-enable-cross-import-overlays","-j16","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.build/include/CRTEffectsKitPackageTests-Swift.h","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","crteffectskit"]
+
+  "C.CRTEffectsKitPackageTests-arm64-apple-macosx26.0-debug.test":
+    tool: shell
+    inputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/CRTConfig.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/CRTModifier.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/ScanlineFlicker.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit.build/resource_bundle_accessor.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.build/runner.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitTests.build/CRTEffectsKitTests.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.product/Objects.LinkFileList"]
+    outputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.xctest/Contents/MacOS/CRTEffectsKitPackageTests"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.xctest/Contents/MacOS/CRTEffectsKitPackageTests"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug","-o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.xctest/Contents/MacOS/CRTEffectsKitPackageTests","-module-name","CRTEffectsKitPackageTests","-Xlinker","-no_warn_duplicate_libraries","-Xlinker","-bundle","-Xlinker","-rpath","-Xlinker","@loader_path/../../../","@/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitPackageTests.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-6.2/macosx","-target","arm64-apple-macosx14.0","-Xlinker","-add_ast_path","-Xlinker","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKit.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKitPackageTests.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKitTests.swiftmodule","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g"]
+
+  "C.CRTEffectsKitTests-arm64-apple-macosx26.0-debug.module":
+    tool: shell
+    inputs: ["/Users/johnpavley/Developer/CRTEffectsKit/Tests/CRTEffectsKitTests/CRTEffectsKitTests.swift","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKit.swiftmodule","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitTests.build/sources"]
+    outputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitTests.build/CRTEffectsKitTests.swift.o","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKitTests.swiftmodule"]
+    description: "Compiling Swift Module 'CRTEffectsKitTests' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","CRTEffectsKitTests","-emit-dependencies","-emit-module","-emit-module-path","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules/CRTEffectsKitTests.swiftmodule","-output-file-map","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitTests.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKitTests.build/sources","-I","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx14.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-index-store-path","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-Xfrontend","-enable-cross-import-overlays","-j16","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-swift-version","5","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","crteffectskit"]
+
+  "CRTEffectsKit-arm64-apple-macosx26.0-debug.module-resources":
+    tool: phony
+    inputs: ["/Users/johnpavley/Developer/CRTEffectsKit/.build/arm64-apple-macosx/debug/CRTEffectsKit_CRTEffectsKit.bundle/CRTShader.metal"]
+    outputs: ["<CRTEffectsKit-arm64-apple-macosx26.0-debug.module-resources>"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/johnpavley/Developer/CRTEffectsKit/Sources/CRTEffectsKit/","/Users/johnpavley/Developer/CRTEffectsKit/Tests/CRTEffectsKitTests/","/Users/johnpavley/Developer/CRTEffectsKit/Package.swift","/Users/johnpavley/Developer/CRTEffectsKit/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+
