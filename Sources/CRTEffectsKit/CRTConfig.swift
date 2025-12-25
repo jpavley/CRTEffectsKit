@@ -225,4 +225,23 @@ extension CRTConfig {
         cornerRadius: 0,
         screenInset: 8
     )
+
+    /// For text/foreground content - barrel distortion and phosphor glow only.
+    /// Use with a separate background layer that has full CRT effects.
+    /// Keeps text vibrant and readable while maintaining the curved screen feel.
+    public static let textOnly = CRTConfig(
+        enabled: true,
+        barrelEnabled: true,
+        barrelIntensity: 0.15,
+        vignetteEnabled: false,
+        vignetteIntensity: 0,
+        vignetteRadius: 0,
+        scanlinesEnabled: false,
+        scanlineSpacing: 0,
+        scanlineIntensity: 0,
+        glowEnabled: true,
+        glowIntensity: 0.3,
+        cornerRadius: 0,
+        screenInset: 8
+    )
 }
