@@ -54,6 +54,17 @@ public struct CRTDemoView: View {
         }
     }
 
+    // MARK: - Nibble Level Colors (HSB values from Bit Quiz 16)
+
+    /// Nibble level background: H=209, S=100%, B=36% (dark blue)
+    public static let nibbleBackground = Color(hue: 209/360, saturation: 1.0, brightness: 0.36)
+    /// Nibble level accent: H=29, S=100%, B=100% (orange)
+    public static let nibbleAccent = Color(hue: 29/360, saturation: 1.0, brightness: 1.0)
+    /// Nibble level primary: H=29, S=44%, B=100%
+    public static let nibblePrimary = Color(hue: 29/360, saturation: 0.44, brightness: 1.0)
+    /// Nibble level secondary: H=209, S=49%, B=80%
+    public static let nibbleSecondary = Color(hue: 209/360, saturation: 0.49, brightness: 0.80)
+
     // MARK: - State
 
     @State private var selectedPreset: Preset
@@ -66,10 +77,10 @@ public struct CRTDemoView: View {
     /// Creates a CRT demo view.
     /// - Parameters:
     ///   - initialPreset: The preset to start with (default: .authentic)
-    ///   - backgroundColor: The background color to apply effects to (default: terminal gray)
+    ///   - backgroundColor: The background color to apply effects to (default: Nibble level dark blue)
     public init(
         initialPreset: Preset = .authentic,
-        backgroundColor: Color = Color(white: 0.35)
+        backgroundColor: Color = nibbleBackground
     ) {
         _selectedPreset = State(initialValue: initialPreset)
         _config = State(initialValue: initialPreset.config)
@@ -109,7 +120,7 @@ public struct CRTDemoView: View {
                 // Header
                 Text("CRT Effects Demo")
                     .font(.headline)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Self.nibbleAccent)
 
                 // Preset picker
                 HStack {
@@ -135,10 +146,10 @@ public struct CRTDemoView: View {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Scanlines")
                         .font(.subheadline.bold())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Self.nibbleAccent)
 
                     Toggle("Enabled", isOn: $config.scanlinesEnabled)
-                        .tint(.green)
+                        .tint(Self.nibbleAccent)
 
                     parameterSlider(
                         label: "Spacing",
@@ -167,14 +178,14 @@ public struct CRTDemoView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Other Effects")
                         .font(.subheadline.bold())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Self.nibbleAccent)
 
                     Toggle("Barrel Distortion", isOn: $config.barrelEnabled)
-                        .tint(.green)
+                        .tint(Self.nibbleAccent)
                     Toggle("Vignette", isOn: $config.vignetteEnabled)
-                        .tint(.green)
+                        .tint(Self.nibbleAccent)
                     Toggle("Phosphor Glow", isOn: $config.glowEnabled)
-                        .tint(.green)
+                        .tint(Self.nibbleAccent)
                 }
 
                 Divider().background(.white.opacity(0.3))
@@ -183,7 +194,7 @@ public struct CRTDemoView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Current Config")
                         .font(.subheadline.bold())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Self.nibbleAccent)
                     Text("scanlineSpacing: \(config.scanlineSpacing, specifier: "%.1f")")
                         .font(.caption.monospaced())
                         .foregroundStyle(.white.opacity(0.7))
@@ -222,7 +233,7 @@ public struct CRTDemoView: View {
                     .foregroundStyle(.white.opacity(0.6))
             }
             Slider(value: value, in: range)
-                .tint(.white)
+                .tint(Self.nibbleAccent)
         }
     }
 }
@@ -230,16 +241,16 @@ public struct CRTDemoView: View {
 // MARK: - Previews
 
 @available(iOS 17.0, macOS 14.0, *)
-#Preview("CRT Demo - Default") {
+#Preview("CRT Demo - Nibble Theme") {
     CRTDemoView()
 }
 
 @available(iOS 17.0, macOS 14.0, *)
-#Preview("CRT Demo - Subtle") {
+#Preview("CRT Demo - Subtle Preset") {
     CRTDemoView(initialPreset: .subtle)
 }
 
 @available(iOS 17.0, macOS 14.0, *)
-#Preview("CRT Demo - Yellow Background") {
-    CRTDemoView(initialPreset: .authentic, backgroundColor: Color.yellow.opacity(0.3))
+#Preview("CRT Demo - Gray Background") {
+    CRTDemoView(initialPreset: .authentic, backgroundColor: Color(white: 0.35))
 }
