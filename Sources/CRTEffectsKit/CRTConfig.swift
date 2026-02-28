@@ -192,19 +192,19 @@ extension CRTConfig {
         screenInset: 2
     )
 
-    /// For dark/low-light conditions - full authentic CRT effect.
+    /// For dark/low-light conditions - gentler CRT effect to keep colors vibrant.
     public static let lowBrightness = CRTConfig(
         enabled: true,
         barrelEnabled: true,
         barrelIntensity: 0.15,
         vignetteEnabled: true,
-        vignetteIntensity: 0.40,
-        vignetteRadius: 0.8,
+        vignetteIntensity: 0.20,
+        vignetteRadius: 0.9,
         scanlinesEnabled: true,
         scanlineSpacing: 4,
-        scanlineIntensity: 0.25,
+        scanlineIntensity: 0.12,
         glowEnabled: true,
-        glowIntensity: 0.3,
+        glowIntensity: 0.2,
         cornerRadius: 0,
         screenInset: 8
     )
@@ -226,7 +226,7 @@ extension CRTConfig {
         screenInset: 8
     )
 
-    /// For text/foreground content - barrel distortion and phosphor glow only.
+    /// For text/foreground content - barrel distortion and subtle phosphor glow only.
     /// Use with a separate background layer that has full CRT effects.
     /// Keeps text vibrant and readable while maintaining the curved screen feel.
     public static let textOnly = CRTConfig(
@@ -240,7 +240,7 @@ extension CRTConfig {
         scanlineSpacing: 0,
         scanlineIntensity: 0,
         glowEnabled: true,
-        glowIntensity: 0.3,
+        glowIntensity: 0.15,
         cornerRadius: 0,
         screenInset: 8
     )
