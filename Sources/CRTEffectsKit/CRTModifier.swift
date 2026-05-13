@@ -38,7 +38,17 @@ public struct CRTEffectModifier: ViewModifier {
     public func body(content: Content) -> some View {
         if config.enabled {
             content
-                // Apply barrel distortion first (changes pixel positions)
+                // Scanlines stamped in source/content space so the barrel pass
+                // below warps them into a curve matching the screen edge.
+                .colorEffect(
+                    Self.shaderLibrary.scanlines(
+                        .float(config.scanlineSpacing),
+                        .float(effectiveScanlineIntensity)
+                    ),
+                    isEnabled: config.scanlinesEnabled
+                )
+                // Barrel distortion samples the scanlined intermediate, so
+                // bands bow with the screen instead of staying flat.
                 .distortionEffect(
                     Self.shaderLibrary.barrelDistortion(
                         .float2(Float(size.width), Float(size.height)),
@@ -47,15 +57,8 @@ public struct CRTEffectModifier: ViewModifier {
                     maxSampleOffset: CGSize(width: 30, height: 30),
                     isEnabled: config.barrelEnabled
                 )
-                // Apply scanlines (color effect)
-                .colorEffect(
-                    Self.shaderLibrary.scanlines(
-                        .float(config.scanlineSpacing),
-                        .float(effectiveScanlineIntensity)
-                    ),
-                    isEnabled: config.scanlinesEnabled
-                )
-                // Apply vignette (color effect)
+                // Vignette darkens the actual visible corners — must run in
+                // post-distortion screen space.
                 .colorEffect(
                     Self.shaderLibrary.vignette(
                         .float2(Float(size.width), Float(size.height)),
@@ -64,7 +67,7 @@ public struct CRTEffectModifier: ViewModifier {
                     ),
                     isEnabled: config.vignetteEnabled
                 )
-                // Apply glow last (layer effect - most expensive)
+                // Glow blooms neighboring output pixels — also screen space.
                 .layerEffect(
                     Self.shaderLibrary.phosphorGlow(
                         .float2(Float(size.width), Float(size.height)),
